@@ -34,7 +34,7 @@ Now the time. So when we out of time, the Mario dies. It is implemented here.
 
 It jumps if greater and if it smaller or equal, it will continue to call the playerDeath
 
-So we just need to make it jump even it smaller or equal by change the jg to jmp.
+So we just need to change from 	Conditional jump to Unconditional one by change the JG to JMP.
 Again, r2 for this.
 
 We can play the game much easier now but to make it even easier, Mario will not die unless he falls into a hole.
