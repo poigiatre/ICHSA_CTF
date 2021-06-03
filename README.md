@@ -53,4 +53,4 @@ This is the variable but in Ghidra:
 0 = false so 1 = true.
 Change it into 1 will solve the problem.
 
-So there we go.
+And there we go.
