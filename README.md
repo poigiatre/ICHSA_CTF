@@ -1,4 +1,4 @@
-# ICHSA_CTF
+# ICHSA_CTF_Super_Super_Mario
 This is the first time I write writeup so hope you forgive my carelessness.
 
 So there are the letters of the flag are found in the end of each level and are made of coins (one letter in the end of each level)
