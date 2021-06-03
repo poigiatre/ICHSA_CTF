@@ -8,33 +8,49 @@ So I will resolve the 3 problems to make this much easier.
 
 First is the number of lives. When we play the game we can see we got 3 lives.
 
-![](https://drive.google.com/file/d/1KK1MfZnEbpTTS--vQrgpaV0-RzyqxxhW/view?usp=sharing)
+![numofLives](https://github.com/poigiatre/ICHSA_CTF/blob/main/NumberofLives1.jpg)
 
 and when the mario died, the number of lives reduced by 1 until we got no lives and game over.
 So we won't let the game reduces our lives.
 In Ghidra there are 2 times the getNumOfLives and setNumOfLives are called when playerDeath
 
-![](https://drive.google.com/file/d/1wOWpkzThqJaC-xFrzJ3z-lAZsSrMkagV/view?usp=sharing)
+![getnumofLive1](https://github.com/poigiatre/ICHSA_CTF/blob/main/Get_SetNumofLives2.jpg)
 
-![](https://drive.google.com/file/d/1r9By0pnpfrXg8-wPomyb47hZFwX7yFJc/view?usp=sharing)
+![getnumofLive2](https://github.com/poigiatre/ICHSA_CTF/blob/main/Get_SetNumofLives3.jpg)
 
 It gets the number of lives to eax then subtracts it by 1 and then set the numbers of lives with that eax.
+
 So we just need to modified the 0x1 to 0x0
+
 I use r2 for this (remember to make a copy of the original file just in case we mess up)
+
 Modified those 0x1. Use this tutorial if you don't know how to patch binary, it helps me a lot (https://www.youtube.com/watch?v=o-Y0KffWgQI)
+
 The first problem solved.
+
 Now the time. So when we out of time, the Mario dies. It is implemented here.
-![](https://drive.google.com/file/d/1fB6lGWnAGeOYDs4ev-wZ8jXwVkSLwaP6/view?usp=sharing)
+
+![time](https://github.com/poigiatre/ICHSA_CTF/blob/main/Time1.jpg)
+
 It jumps if greater and if it smaller or equal, it will continue to call the playerDeath
-So we just need to make it jump even it smaller or equal by change the jg to jmp
+
+So we just need to make it jump even it smaller or equal by change the jg to jmp.
 Again, r2 for this.
+
 We can play the game much easier now but to make it even easier, Mario will not die unless he falls into a hole.
 This can be done thanks to the given hint.
-As I noticed, there is a variable call unKillAble in Player.cpp
-![](https://drive.google.com/file/d/1e9vcrIeqJy2bhieL50eTEBPrxSrIgbE1/view?usp=sharing)
-Why don't we change it to true
-This is the variable but in Ghidra
-![](https://drive.google.com/file/d/1cyJY6-zFuEehBhJqfVm36GDp2jYztoB1/view?usp=sharing)
-0 = false so 1 = true
+
+As I noticed, there is a variable call unKillAble in Player.cpp:
+
+![](https://github.com/poigiatre/ICHSA_CTF/blob/main/unKillAble1.jpg)
+
+Why don't we change it to true.
+
+This is the variable but in Ghidra:
+
+![](https://github.com/poigiatre/ICHSA_CTF/blob/main/unKillAble2.jpg)
+
+0 = false so 1 = true.
 Change it into 1 will solve the problem.
+
 So there we go.
