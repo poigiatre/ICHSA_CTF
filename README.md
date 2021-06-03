@@ -8,15 +8,15 @@ So I will resolve the 3 problems to make this much easier.
 
 First is the number of lives. When we play the game we can see we got 3 lives.
 
-![numofLives](https://github.com/poigiatre/ICHSA_CTF/blob/main/NumberofLives1.jpg)
+![numofLives](https://github.com/poigiatre/ICHSA_CTF/blob/Super_Super_Mario/NumberofLives1.jpg)
 
 and when the mario died, the number of lives reduced by 1 until we got no lives and game over.
 So we won't let the game reduces our lives.
 In Ghidra there are 2 times the getNumOfLives and setNumOfLives are called when playerDeath
 
-![getnumofLive1](https://github.com/poigiatre/ICHSA_CTF/blob/main/Get_SetNumofLives2.jpg)
+![getnumofLive1](https://github.com/poigiatre/ICHSA_CTF/blob/Super_Super_Mario/Get_SetNumofLives2.jpg)
 
-![getnumofLive2](https://github.com/poigiatre/ICHSA_CTF/blob/main/Get_SetNumofLives3.jpg)
+![getnumofLive2](https://github.com/poigiatre/ICHSA_CTF/blob/Super_Super_Mario/Get_SetNumofLives3.jpg)
 
 It gets the number of lives to eax then subtracts it by 1 and then set the numbers of lives with that eax.
 
@@ -30,7 +30,7 @@ The first problem solved.
 
 Now the time. So when we out of time, the Mario dies. It is implemented here.
 
-![time](https://github.com/poigiatre/ICHSA_CTF/blob/main/Time1.jpg)
+![time](https://github.com/poigiatre/ICHSA_CTF/blob/Super_Super_Mario/Time1.jpg)
 
 It jumps if greater and if it smaller or equal, it will continue to call the playerDeath
 
@@ -42,13 +42,13 @@ This can be done thanks to the given hint.
 
 As I noticed, there is a variable call unKillAble in Player.cpp:
 
-![](https://github.com/poigiatre/ICHSA_CTF/blob/main/unKillAble1.jpg)
+![unkill1](https://github.com/poigiatre/ICHSA_CTF/blob/Super_Super_Mario/unKillAble1.jpg)
 
 Why don't we change it to true.
 
 This is the variable but in Ghidra:
 
-![](https://github.com/poigiatre/ICHSA_CTF/blob/main/unKillAble2.jpg)
+![unkill2](https://github.com/poigiatre/ICHSA_CTF/blob/Super_Super_Mario/unKillAble2.jpg)
 
 0 = false so 1 = true.
 Change it into 1 will solve the problem.
